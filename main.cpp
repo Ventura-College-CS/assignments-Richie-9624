@@ -1,8 +1,8 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-int main() //assignment 0.1
+int main()
 {
-  cout << "This is my first program\n";
-
+  cout << "This is my first program";
 }
