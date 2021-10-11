@@ -45,7 +45,7 @@ int main()
 
     for (int i = 0; i < N; i++)
     {
-		if(((sptr+i)->total_score)/3 >= 50){
+		if(((sptr+i)->total_score)/3 >= 85){
 			printStudents(sptr+i);
 		}
     }
@@ -55,7 +55,7 @@ int main()
 
 void printStudents(Students * const ptr)
 {
-   double temp_total;
+  double temp_total;
 	cout << "ID: " << (ptr)->sid << endl;
 	cout << "Name: " << (ptr)->sname << endl;
 	cout << "Scores: " << endl;
