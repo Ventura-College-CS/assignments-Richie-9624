@@ -23,7 +23,7 @@ int main()
 	fstream f;
 	Students *sptr = new Students [N];
 
-    f.open("students.bin", ios::in | ios::binary);
+    f.open("students.bin");
 
 	if (f.is_open())
     {
