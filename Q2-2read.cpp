@@ -23,7 +23,7 @@ int main()
 	fstream f;
 	Students *sptr = new Students [N];
 
-    f.open("students.bin");
+  f.open("students.bin");
 
 	if (f.is_open())
     {
@@ -51,19 +51,19 @@ int main()
     }
 }
 
-
-
 void printStudents(Students * const ptr)
 {
   double temp_total;
 	cout << "ID: " << (ptr)->sid << endl;
 	cout << "Name: " << (ptr)->sname << endl;
 	cout << "Scores: " << endl;
+
 	for(int j = 0; j < NUM_SCORES; j++)
   {
     cout << (ptr)->scores[j] << endl;
     temp_total += (ptr)->scores[j];
 	}
+
   cout << "Total Score: " << endl;
   cout << temp_total << endl;
   (ptr)->total_score = temp_total;
