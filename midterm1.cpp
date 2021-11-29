@@ -65,3 +65,29 @@ class Stack
 
     int size(){return pool.size();}  //returns the size of the stack
 };
+
+int main()
+{
+  //creates 5 student with information
+  Student s1(100, "John", new double[3]{10, 20, 30});
+  Student s2(101, "Mike", new double[3]{10.2, 20.2, 30.2});
+  Student s3(102, "Evan", new double[3]{1, 2, 3});
+  Student s4(103, "Jake", new double[3]{20, 80, 90});
+  Student s5(104, "Carl", new double[3]{30, 40, 320});
+
+  Stack<Student>st; //creates the stack
+
+ 
+  st.push(s1);   // pushes the students into the stack
+  st.push(s2);
+  st.push(s3);
+  st.push(s4);
+  st.push(s5);
+
+  cout << "Size: " << st.size() << endl; // prints the size of the stack
+
+  while(!st.isEmpty()) // runs the stack until it is empty
+  {
+
+  }
+}
