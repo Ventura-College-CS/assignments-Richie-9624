@@ -88,6 +88,10 @@ int main()
 
   while(!st.isEmpty()) // runs the stack until it is empty
   {
-
+    Student res = st.pop();  //pops student from stack and displays details
+    cout << "SID: " << res.getID() << " , SName: " << res.getName() << " , scores: ";
+    cout << res.getScores()[0] << ", " << res.getScores()[1] << " , " << res.getScores()[2] << endl;
   }
+
+  return 0;
 }
