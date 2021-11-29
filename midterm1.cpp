@@ -3,65 +3,65 @@
 
 using namespace std;
 
-class Student
+class Student  //student class
 {
-  private: 
+  private:   //instance members
     int SID;
     string SName;
     double *scores;
 
-  public:
+  public:  //defualt constructor
     Student()
     {
       SID = 0;
       SName = "";
       scores = nullptr;
     }
-
-    Student(int i, string name, double *sc)
+        //parameterized constructor
+    Student(int i, string name, double *sc)  
     {
       SID = i;
       SName = name;
       scores = sc;
     }
 
-    int getID(){return SID;}
+    int getID(){return SID;}  //getters
     string getName(){return SName;}
     double *getScores(){return scores;}
 };
 
-template <class T>
+template <class T>  //stack class
 class Stack
 {
-  private:
+  private:  //instance members
     vector<T>pool;
 
   public:
-    Stack()
+    Stack()  //defualt constructor
     {
     }
 
-    void push(const T &el)
+    void push(const T &el)  //pushes elements into the pool
     {
       pool.push_back(el);
     }
 
-    T pop()
+    T pop()  //removes and returns the top of the element from the pool
     {
       T res = pool[pool.size() - 1];
       pool.pop_back();
       return res;
     }
 
-    T topEl()
+    T topEl()  //returns to top of the pool
     {
       return pool[pool.size() - 1];
     }
 
-    bool isEmpty()
+    bool isEmpty()  //returns the stack if empty
     {
       return pool.size() == 0;
     }
 
-    int size(){return pool.size();}
+    int size(){return pool.size();}  //returns the size of the stack
 };
