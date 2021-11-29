@@ -41,7 +41,7 @@ class Student  //student class
       {
         sum += scores[i];
       }
-      return sum;
+      return sum; //return new sum
     }
 
     void display() //method to display student info
@@ -53,8 +53,24 @@ class Student  //student class
       {
         cout << scores[i] << " ";
       }
+      cout << "Score sum: " << getsum();
     }
 };
+
+class StudentCompare //studentcompare class
+{
+  public:
+  bool operator()(Student s1, Student s2)  //larger sum as higher priority
+  {
+    return s1.getsum() < s2.getsum();
+  }
+};
+
+int main()
+{
+  
+}
+
 
 
 
