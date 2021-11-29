@@ -29,3 +29,39 @@ class Student
     string getName(){return SName;}
     double *getScores(){return scores;}
 };
+
+template <class T>
+class Stack
+{
+  private:
+    vector<T>pool;
+
+  public:
+    Stack()
+    {
+    }
+
+    void push(const T &el)
+    {
+      pool.push_back(el);
+    }
+
+    T pop()
+    {
+      T res = pool[pool.size() - 1];
+      pool.pop_back();
+      return res;
+    }
+
+    T topEl()
+    {
+      return pool[pool.size() - 1];
+    }
+
+    bool isEmpty()
+    {
+      return pool.size() == 0;
+    }
+
+    int size(){return pool.size();}
+};
