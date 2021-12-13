@@ -84,7 +84,7 @@ float Pfix(string postfix)
 int main()
 {
   string post;  //creates string to take user input
-  cout<< "enter in your expression then press enter" << endl;
+  cout<< "enter in your postfix expression then press enter" << endl;
   cin >> post;
   cout << post << " " << "=" << " " << Pfix(post) << endl;
   cout << endl;
