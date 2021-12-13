@@ -26,3 +26,28 @@ int Operatrr(char ch)
   }
   return -1;
 }
+
+float Operations(int a, int b, char op) 
+//actual operations for each symbol
+{
+  if(op == '+')
+  {
+    return b+a; 
+  }
+  else if(op == '-')
+  {
+    return b-a;
+  }
+  else if(op == '*')
+  {
+   return b*a;
+  }
+  else if(op == '/')
+  {
+    return b/a;
+  }
+  else if(op == '^')
+  {
+    return pow(b,a); //finds b^a
+  }
+}
