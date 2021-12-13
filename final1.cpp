@@ -45,26 +45,9 @@ void sort(Course arr[10])
   }
 }
 
-string BinarySearch(Course arr[10], int id, int start, int end)
+int BinarySearch(Course arr[10], int id, int start, int end)
 {
-  int mid = (int)(start+end)/2;
-  if(end>start)
-  {
-    if(arr[mid].id == id)
-    {
-      return "found";
-    }
-    else if(arr[mid].id>id)
-    {
-      return BinarySearch(arr, id, start, mid);
-    }
-    else if(arr[mid].id<id)
-    {
-      return BinarySearch(arr, id, mid+1, end);
-    }
-  }
-  return "not found";
-}
+  
 
 int main()
 {
