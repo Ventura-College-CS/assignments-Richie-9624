@@ -1,105 +1,81 @@
 #include <iostream>
-#include <fstream>
-using namespace std;
+#include<fstream>
+#define MAX_LEN 20
+#define NUM_SCORES 3
 
-const int MAX_LEN = 20;
-const int NUM_SCORES = 3;
+using namespace std;
 
 struct Students
 {
   int sid;
   char sname[MAX_LEN];
-  double scores[NUM_SCORES];
+  int scores[NUM_SCORES];
 };
 
-Students *makeStudents(int);
-void printStudents(Students * const, int);
-void sortStudents(Students * const, int);
-
-Students *makeStudents(int N)
+void makeStudents(Students* ptr, int size)
 {
-  ifstream ifs;
-  Students *ptr = new Students[N];
-
-  ifs.open("students.txt");
-  if (ifs.fail())
+  //read from file
+  ifstream in;
+  //open file called students.txt
+  in.open("students.txt");
+  //check if file can be opened
+  if (!in)
   {
-    cerr << "Error unable to open the file";
-    exit(0);
+    cout << "students.txt cannot be opened\n";
+    return;
   }
+  //read from file
 
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < size; i++)
   {
-    ifs >> (ptr+i) ->sid >> (ptr+i)->sname;
+    if (!in.eof())
+    in >> ptr[i].sid >> ptr[i].sname >> ptr[i].scores[0] >> ptr[i].scores[1] >> ptr[i].scores[2];
+  }
+}
 
-    for (int j = 0; j < NUM_SCORES; j++)
+void printStudents(Students* ptr, int size)
+{
+  for (int i = 0; i < size; i++)
+  {
+    cout << "sid: " << ptr[i].sid << " " << "sname: " << ptr[i].sname << " " << "marks: " << ptr[i].scores[0] << " " << ptr[i].scores[1] << " " << ptr[i].scores[2] << endl;
+  }
+}
+
+void sortStudents(Students* ptr, int size)
+{
+  int sum1 = 0, sum2 = 0;
+  Students tmp;
+  //sort students by scores sum
+  //bubble sort
+  for (int i = 0; i < 10; i++)
+  {
+    for (int j = 0; j < 10-i-1; j++)
     {
-      ifs >> (ptr+i)->scores[j];
-      if (ifs.fail())
+      sum1 = ptr[j].scores[0] + ptr[j].scores[1] + ptr[j].scores[2];
+      sum2 = ptr[j + 1].scores[0] + ptr[j + 1].scores[1] + ptr[j + 1].scores[2];
+      if (sum1 > sum2)
       {
-          cerr << "File Read Error";
-          exit(0);
+        //swap two info
+        tmp = ptr[j];
+        ptr[j] = ptr[j + 1];
+        ptr[j + 1] = tmp;
       }
     }
   }
-
-  ifs.close();
-  return ptr;
 }
 
-void printStudents(Students * const ptr, int N)
+int main() 
 {
-  for (int i = 0; i < N; i++)
-  {
-    cout << (ptr+i)->sid << " ";
-    cout << (ptr+i)->sname << " ";
-    for (int j = 0; j < NUM_SCORES; j++)
-        cout << (ptr+i)-> scores[j] << " ";
-    cout << endl;
-  }
-}
-
-void sortStudents(Students * const ptr, int N)
-{
-  double *sumptr = new double[N]; 
-  double sum;
-
-  for (int i = 0; i < N; i++)
-  {
-    sum = 0;
-    for (int j = 0; j < NUM_SCORES; j++)
-        sum += (ptr+i)->scores[j];
-    *(sumptr+i) = sum; 
-  }
-
-  for (int i = 0; i < N; i++)
-  {
-    for (int j = i+1; j < N; j++)
-    {
-      if (*(sumptr+i) > *(sumptr+j)) 
-      {
-        Students temp = *(ptr+i);
-        *(ptr+i) = *(ptr+j);
-        *(ptr+j) = temp;  
-        sum = *(sumptr+i); 
-        *(sumptr+i) = *(sumptr+j);
-        *(sumptr+j) = sum;
-      }
-    }
-  }
-
-  delete sumptr;
-
-}
-
-int main()
-{
-  const int N = 10;
-  Students *ptr;
-  ptr = makeStudents(N);
-  cout << "Students sorted by score sum: " << endl;
-  cout << endl;
-  sortStudents(ptr, N);
-  printStudents(ptr, N);
-  delete ptr; 
+  Students* ptr = NULL;
+  ptr = new Students[10];
+  //first read from file using function makeStudents
+  makeStudents(ptr, 10);
+  //print before sorting
+  cout << "Student info before sorting...." << endl;
+  printStudents(ptr, 10);
+  //print student info after sorting
+  sortStudents(ptr, 10);
+  //print students info after sorting
+  cout << "Student info after sorting...." << endl;
+  printStudents(ptr, 10);
 }
