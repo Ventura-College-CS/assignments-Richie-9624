@@ -52,7 +52,26 @@ void Print(Course arr[10])
   cout << "array: " << endl;
   for(int i = 0; i < 10; i++)//print all 10 objects
   {
-    cout << arr[i].getID() << "\t" << arr[i].getName() << "\t" << arr[i].getCredit() << endl;
+    cout << arr[i].getID() << " " << arr[i].getName() << " " << arr[i].getCredit() << endl;
   }
 }
 
+int Partition(Course arr[10], int start, int end)
+{
+  int pivot = arr[end].getID();
+  int a = -1;
+  for (int i = 0; i < end; i++)
+  {
+    if(arr[i].getID() < pivot)
+    {
+      swap(arr[++a], arr[i]);
+    }
+  }
+  swap(arr[a+1], arr[end]);
+  return a+1;
+}
+
+void Quicksort(Course arr[10], int start, int end)
+{
+
+}
