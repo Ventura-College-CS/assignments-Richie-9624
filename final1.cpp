@@ -47,6 +47,24 @@ void sort(Course arr[10])
 
 int BinarySearch(Course arr[10], int id, int start, int end)
 {
+  if(end > start)
+  {
+    int mid = (int)(start + end)/2;
+    if(arr[mid].id == id)
+    {
+      return mid;
+    }
+    else if(arr[mid].id>id)
+    {
+      return BinarySearch(arr, id, start, mid);
+    }
+    else if(arr[mid].id<id)
+    {
+      return BinarySearch(arr, id, mid+1, end);
+    }
+  }
+  return -1;
+}
   
 
 int main()
@@ -63,6 +81,8 @@ int main()
   }
   ifs.close();
 
+  sort(c);
+
   cout << "enter course ID: ";
   cin >> id;
   int pos = BinarySearch(c, id, 0, 10);
@@ -72,7 +92,7 @@ int main()
   }
   else
   {
-    cout << "course id: " << c[pos].id << " Name: " << c[pos].name << " Credits: " << c[pos].credit << endl;
+    cout << "course id: " << c[pos].id << " name: " << c[pos].name << " Credits: " << c[pos].credit << endl;
   }
   return 0;
 }
