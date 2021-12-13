@@ -3,16 +3,16 @@
 
 using namespace std;
 
-class Course
+class Course //class
 {
   public:
     int id;
     string name;
     int credit;
 
-    Course(){}
+    Course(){} //defualt constructor
 
-    Course(int ID, string sname, int coursecredit)
+    Course(int ID, string sname, int coursecredit)  //parameterized constructor
     {
       id = ID;
       name = sname;
@@ -27,7 +27,7 @@ void swap(int *a, int *b)
   *b = temp;
 }
 
-void sort(Course arr[10])
+void sort(Course arr[10]) //method to sort course objects
 {
   for(int i = 0; i < 10; i++ )
   {
@@ -47,7 +47,7 @@ void sort(Course arr[10])
 
 int BinarySearch(Course arr[10], int id, int start, int end)
 {
-  if(end > start)
+  if(end > start)  //binary search method
   {
     int mid = (int)(start + end)/2;
     if(arr[mid].id == id)
@@ -73,7 +73,7 @@ int main()
   int i = 0;
   int id;
 
-  ifstream ifs ("final.txt");
+  ifstream ifs ("final.txt");  //text file
   while (ifs >> c[i].id)
   {
     ifs >> c[i].name >> c[i].credit;
