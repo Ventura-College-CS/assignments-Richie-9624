@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Course  //student class from 1ts question then edited more
+class Course  //student class from 1st question then edited more
 {
   private:   //instance members
     int id;
@@ -30,4 +30,20 @@ class Course  //student class from 1ts question then edited more
     string getName(){return name;}
     int getCredit(){return credit;}
 };
+
+void Array(Course arr[10])
+{
+  int ID;
+  int coursecredit;
+  string sname;
+
+  ifstream ifs("final.txt");
+
+  for(int i = 0; i<10; i++)
+  {
+    ifs >> ID >> sname >> coursecredit;
+    arr[i] = Course(ID, sname, coursecredit);
+  }
+  ifs.close();
+}
 
