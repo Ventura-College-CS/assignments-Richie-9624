@@ -52,7 +52,7 @@ float Operations(int a, int b, char op)
   }
 }
 
-float postfixe()
+float Pfix(string postfix)
 {
   int a;
   int b;
@@ -78,3 +78,13 @@ float postfixe()
   }
   return stac.top();
 }
+
+int main()
+{
+  string post;
+  cout<< "enter in your expression" << endl;
+  cin >> post;
+  cout << "'" << post << "'" << "results: " << Pfix(post) << endl;
+  cout << endl;
+}
+
