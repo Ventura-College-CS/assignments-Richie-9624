@@ -31,27 +31,17 @@ float Operations(int a, int b, char op)
 //actual operations for each symbol
 {
   if(op == '+')
-  {
     return b+a; 
-  }
-  else if(op == '-')
-  {
-    return b-a;
-  }
-  else if(op == '*')
-  {
-   return b*a;
-  }
-  else if(op == '/')
-  {
-    return b/a;
-  }
   else if(op == '^')
-  {
     return pow(b,a); //finds b^a
-  }
+  else if(op == '*')
+   return b*a;
+  else if(op == '-')
+    return b-a;
+  else if(op == '/')
+    return b/a;
   else 
-  return INT_MIN;  //will return negative infinity
+    return INT_MIN;  //will return negative infinity
 }
 
 float Pfix(string postfix)
