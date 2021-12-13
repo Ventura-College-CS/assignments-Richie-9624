@@ -51,3 +51,18 @@ float Operations(int a, int b, char op)
     return pow(b,a); //finds b^a
   }
 }
+
+float postfixe()
+{
+  int a;
+  int b;
+
+  stack<float>stac;  //creates the stack
+  string::iterator it;
+
+  for( it = postfix.begin(); it != postfix.end(); it++ )
+  {
+
+  }
+
+}
