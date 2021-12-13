@@ -18,7 +18,7 @@ int Operand(char ch)
   return -1; //if character isn't an operand
 }
 
-int Operatrr(char ch)  
+int Operator(char ch)  
 {
   if(ch == '+' || ch == '-' || ch == '*' || ch == '^' || ch == '/')
   {
@@ -62,7 +62,19 @@ float postfixe()
 
   for( it = postfix.begin(); it != postfix.end(); it++ )
   {
+    if (Operator(*it) != -1)
+    {
+      a = stac.top();
+      stac.pop();
+      b = stac.top();
+      stac.pop();
+      stac.push(Operations(a, b, *it));
+    }
 
+    else if(Operand(*it) > 0)
+    {
+      stac.push(input(*it));
+    }
   }
-
+  return stac.top();
 }
