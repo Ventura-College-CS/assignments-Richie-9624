@@ -47,3 +47,12 @@ void Array(Course arr[10])
   ifs.close();
 }
 
+void Print(Course arr[10])
+{
+  cout << "array: " << endl;
+  for(int i = 0; i < 10; i++)//print all 10 objects
+  {
+    cout << arr[i].getID() << "\t" << arr[i].getName() << "\t" << arr[i].getCredit() << endl;
+  }
+}
+
