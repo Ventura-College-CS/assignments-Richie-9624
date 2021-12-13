@@ -6,7 +6,7 @@ float input(char ch) //uses to return float from user input
 {
   int value;
   value = ch;
-  return 0;
+  return float(value -'0');
 }
 
 int Operand(char ch)
@@ -18,13 +18,13 @@ int Operand(char ch)
   return -1; //if character isn't an operand
 }
 
-int Operator(char ch)  
+int Operator(char ch)    //if any other symbol then gives an error
 {
   if(ch == '+' || ch == '-' || ch == '*' || ch == '^' || ch == '/')
   {
-    return 1;
+    return 1; //if character is an operator
   }
-  return -1;
+  return -1;  //if character isn't an operator
 }
 
 float Operations(int a, int b, char op) 
@@ -50,6 +50,8 @@ float Operations(int a, int b, char op)
   {
     return pow(b,a); //finds b^a
   }
+  else 
+  return INT_MIN;  //will return negative infinity
 }
 
 float Pfix(string postfix)
@@ -64,7 +66,7 @@ float Pfix(string postfix)
   {
     if (Operator(*it) != -1)
     {
-      a = stac.top();
+      a = stac.top();  //reads elements and does postfix on them
       stac.pop();
       b = stac.top();
       stac.pop();
@@ -81,10 +83,10 @@ float Pfix(string postfix)
 
 int main()
 {
-  string post;
-  cout<< "enter in your expression" << endl;
+  string post;  //creates string to take user input
+  cout<< "enter in your expression then press enter" << endl;
   cin >> post;
-  cout << "'" << post << "'" << "results: " << Pfix(post) << endl;
+  cout << post << " " << "=" << " " << Pfix(post) << endl;
   cout << endl;
 }
 
