@@ -1,10 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <time.h>
 
 using namespace std;
 
-class Course  //student class from 1st question then edited more
+class Course  //student class from 1st question/midterm then edited more
 {
   private:   //instance members
     int id;
@@ -31,23 +30,8 @@ class Course  //student class from 1st question then edited more
     int getCredit(){return credit;}
 };
 
-void Array(Course c[10])
-{
-  int ID;
-  int coursecredit;
-  string sname;
 
-  ifstream ifs("final.txt");
-
-  for(int i = 0; i<10; i++)
-  {
-    ifs >> ID >> sname >> coursecredit;
-    c[i] = Course(ID, sname, coursecredit);
-  }
-  ifs.close();
-}
-
-void Print(Course c[10])
+void Print(Course c[10])  //print out the array using the getters stated above
 {
   cout << "array: " << endl;
   for(int i = 0; i < 10; i++)//print all 10 objects
@@ -71,7 +55,7 @@ int Partition(Course c[10], int start, int end)
   return a+1;
 }
 
-void Quicksort(Course c[10], int start, int end)
+void Quicksort(Course c[10], int start, int end) //will sort the new array
 {
   int index;
   if (start >= end)
@@ -79,12 +63,28 @@ void Quicksort(Course c[10], int start, int end)
     return;
   }
 
-  index = Partition(c, start, end);
+  index = Partition(c, start, end);  
   Quicksort(c, start, index-1);
   Quicksort(c, index+1, end);
 }
 
-int main()
+void Array(Course c[10])
+{
+  int ID;
+  int coursecredit;
+  string sname;
+
+  ifstream ifs("final.txt");
+
+  for(int i = 0; i<10; i++)
+  {
+    ifs >> ID >> sname >> coursecredit;
+    c[i] = Course(ID, sname, coursecredit);
+  }
+  ifs.close();
+}
+
+int main()  //drives previous functions
 {
   Course c[10];
   Array(c);
