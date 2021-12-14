@@ -31,7 +31,7 @@ class Course  //student class from 1st question then edited more
     int getCredit(){return credit;}
 };
 
-void Array(Course arr[10])
+void Array(Course c[10])
 {
   int ID;
   int coursecredit;
@@ -42,36 +42,58 @@ void Array(Course arr[10])
   for(int i = 0; i<10; i++)
   {
     ifs >> ID >> sname >> coursecredit;
-    arr[i] = Course(ID, sname, coursecredit);
+    c[i] = Course(ID, sname, coursecredit);
   }
   ifs.close();
 }
 
-void Print(Course arr[10])
+void Print(Course c[10])
 {
   cout << "array: " << endl;
   for(int i = 0; i < 10; i++)//print all 10 objects
   {
-    cout << arr[i].getID() << " " << arr[i].getName() << " " << arr[i].getCredit() << endl;
+    cout << c[i].getID() << " " << c[i].getName() << " " << c[i].getCredit() << endl;
   }
 }
 
-int Partition(Course arr[10], int start, int end)
+int Partition(Course c[10], int start, int end)
 {
-  int pivot = arr[end].getID();
+  int pivot = c[end].getID();
   int a = -1;
-  for (int i = 0; i < end; i++)
+  for (int b = 0; b < end; b++)
   {
-    if(arr[i].getID() < pivot)
+    if(c[b].getID() < pivot)
     {
-      swap(arr[++a], arr[i]);
+      swap(c[++a], c[b]);
     }
   }
-  swap(arr[a+1], arr[end]);
+  swap(c[a+1], c[end]);
   return a+1;
 }
 
-void Quicksort(Course arr[10], int start, int end)
+void Quicksort(Course c[10], int start, int end)
 {
+  int index;
+  if (start >= end)
+  {
+    return;
+  }
 
+  index = Partition(c, start, end);
+  Quicksort(c, start, index-1);
+  Quicksort(c, index+1, end);
 }
+
+int main()
+{
+  Course c[10];
+  Array(c);
+  Print(c);
+  cout << endl;
+  Quicksort(c, 0, 10-1);
+  cout << "Your new array: " << endl;
+  Print(c);
+  return 0;
+}
+
+

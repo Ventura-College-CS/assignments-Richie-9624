@@ -1,0 +1,10 @@
+10048 Calculus 3
+10092 History 4
+10003 Algebra 5
+10004 Geometry 1
+10011 Woodshop 2
+10046 Metalshop 1
+10001 Chemistry 5
+10008 Music 5
+10039 Theatre 3
+10055 Communication 1
