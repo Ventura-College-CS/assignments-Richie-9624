@@ -44,12 +44,14 @@ int Partition(Course c[10], int start, int end)
 {
   int pivot = c[end].getID();
   int a = -1;
-  for (int b = 0; b < end; b++)
+  int b = 0;
+  while(b < end)
   {
     if(c[b].getID() < pivot)
     {
       swap(c[++a], c[b]);
     }
+    b++;
   }
   swap(c[a+1], c[end]);
   return a+1;
@@ -73,13 +75,15 @@ void Array(Course c[10])
   int ID;
   int coursecredit;
   string sname;
+  int i = 0;
 
   ifstream ifs("final.txt");
 
-  for(int i = 0; i<10; i++)
+  while(i<10)
   {
     ifs >> ID >> sname >> coursecredit;
     c[i] = Course(ID, sname, coursecredit);
+    i++;
   }
   ifs.close();
 }
@@ -88,10 +92,12 @@ int main()  //drives previous functions
 {
   Course c[10];
   Array(c);
+  cout << endl;
   Print(c);
   cout << endl;
   Quicksort(c, 0, 10-1);
   cout << "Your new array: " << endl;
+  cout << endl;
   Print(c);
   return 0;
 }
